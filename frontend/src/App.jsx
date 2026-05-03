@@ -20,8 +20,7 @@ function App() {
   return (
     <div>
       <header>
-        <h1>Mio E-commerce Light 🥉</h1>
-        <p>Prodotti caricati dal DB locale</p>
+        <h1>E-commerce Light</h1>
       </header>
 
       <main className="container">
