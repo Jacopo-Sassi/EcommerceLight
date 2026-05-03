@@ -20,7 +20,7 @@ Client-side state management for adding/removing items
 Mock Checkout
 Simulated order submission with persistence in database
 Responsive UI
-Built with Tailwind CSS for a modern and mobile-friendly experience
+Built with a modern and mobile-friendly experience
 
 
 🧠 Tech Stack
@@ -28,7 +28,6 @@ Built with Tailwind CSS for a modern and mobile-friendly experience
 Frontend
 
 React.js (Vite)
-Tailwind CSS
 Axios
 
 Backend
