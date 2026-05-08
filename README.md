@@ -1,76 +1,83 @@
-🛒 E-commerce Light – MERN Stack
+🛒 E-commerce Light
 
-Minimal e-commerce application built with the MERN stack to demonstrate full-stack development skills: API design, state management, and database integration.
-
-🎯 Project Goal
-
-This project showcases the ability to build a complete web application from scratch, focusing on:
-
-Clean frontend-backend separation
-REST API development
-State management in React
-Data persistence with MongoDB
+Un mini e-commerce full stack sviluppato con React + Express + MongoDB.
 
 
 🚀 Features
-Product Catalog
-Dynamic product listing fetched from the backend API
-Shopping Cart
-Client-side state management for adding/removing items
-Mock Checkout
-Simulated order submission with persistence in database
-Responsive UI
-Built with a modern and mobile-friendly experience
+
+Frontend (React)
+Visualizzazione prodotti
+Carrello dinamico
+Calcolo totale automatico
+Checkout con nome cliente
+Notifiche UX realtime
+Stato loading durante invio ordine
+
+Navigazione tra:
+🛍️ Shop
+📦 Pannello Admin Ordini
+
+Backend (Express + MongoDB)
+CRUD completo prodotti
+Creazione ordini
+Recupero ordini con .populate()
+Aggiornamento stato ordine
+Eliminazione ordini
+
+API REST semplice e leggibile
+Admin Panel
+Visualizzazione ordini
+Stato ordine (Pending → Shipped)
+Eliminazione ordine
+Storico ordini
+
+🧱 Stack Tecnologico
+Tecnologia	Uso
+React	    Frontend UI
+Express.js	Backend API
+MongoDB	    Database
+Mongoose	ODM
+Node.js	    Runtime
+CSS Vanilla	Styling
+Fetch API	Comunicazione client/server
+
+📡 API Endpoints
+
+Prodotti
+Metodo	Endpoint	Descrizione
+GET	/api/products	Recupera tutti i prodotti
+GET	/api/products/:id	Recupera un prodotto
+POST	/api/products	Crea prodotto
+PUT	/api/products/:id	Modifica prodotto
+DELETE	/api/products/:id	Elimina prodotto
+
+Ordini
+Metodo	Endpoint	Descrizione
+GET	/api/orders	Recupera ordini
+POST	/api/orders	Crea ordine
+PATCH	/api/orders/:id	Aggiorna stato ordine
+DELETE	/api/orders/:id	Elimina ordine
 
 
-🧠 Tech Stack
+🧠 Concetti Tecnici Utilizzati
+React Hooks (useState, useEffect)
+Props drilling
+Stato globale locale
+CRUD REST API
+Async/Await + .then()
+MongoDB Relations con populate()
+Gestione loading state
+Validazioni frontend basilari
+Pattern component-based
 
-Frontend
-
-React.js (Vite)
-Axios
-
-Backend
-
-Node.js
-Express.js
-
-Database
-
-MongoDB (Mongoose ODM)
-
-🗄️ Database Design
-
-Using Mongoose to define structured schemas.
-
-Products Collection
-name
-description
-price
-image
-category
-Orders Collection
-customer info
-list of product IDs
-total amount
-timestamp
-
-
-🔌 API Overview
-Method	Endpoint	Description
-GET	/products	Get all products
-POST	/orders	Create new order
-
-
-🧩 Future Improvements
-Authentication (JWT)
-Real payment integration (Stripe)
-Admin dashboard
-Product filtering & search
-Global state management (Redux / Context API)
-
-💡 What I Learned
-Building a full-stack app end-to-end
-Managing API communication between client and server
-Structuring scalable backend architecture
-Handling real-world application flow (cart → order)
+🛠️ Miglioramenti Futuri
+Login Admin
+JWT Authentication
+Dashboard analytics
+Gestione quantità nel carrello
+Upload immagini prodotti
+Stripe/PayPal integration
+Ricerca prodotti
+Filtri categorie
+Deploy Docker
+Test automatici
