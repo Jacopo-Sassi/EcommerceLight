@@ -347,6 +347,52 @@ button:disabled {
   color: var(--price-color);
 }
 
+/* Badge per lo stato dell'ordine */
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status-badge.pending {
+  background-color: #fee2e2;
+  color: #dc2626; /* Rosso per attesa */
+}
+
+.status-badge.shipped {
+  background-color: #dcfce7;
+  color: #16a34a; /* Verde per spedito */
+}
+
+/* Bottone per spedire */
+.btn-ship {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.3s;
+}
+
+.btn-ship:hover {
+  background-color: #3730a3;
+}
+
+.text-done {
+  color: #9ca3af;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Miglioramento tabella */
+.orders-table td {
+  vertical-align: middle;
+}
+
 /* Responsive: se lo schermo è piccolo, il carrello va sotto */
 @media (max-width: 768px) {
   .main-layout {

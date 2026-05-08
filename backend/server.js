@@ -26,7 +26,7 @@ const Product = require("./models/Product");
 
 // --- ROTTE CRUD PER I PRODOTTI ---
 
-// 1. READ ALL (Ottieni tutti i prodotti)
+// READ ALL (Ottieni tutti i prodotti)
 app.get("/api/products", async (req, res) => {
   try {
     const products = await Product.find();
@@ -38,7 +38,7 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
-// 2. READ ONE (Ottieni un singolo prodotto tramite ID)
+// READ ONE (Ottieni un singolo prodotto tramite ID)
 app.get("/api/products/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -52,7 +52,7 @@ app.get("/api/products/:id", async (req, res) => {
   }
 });
 
-// 3. CREATE (Aggiungi un nuovo prodotto)
+// CREATE (Aggiungi un nuovo prodotto)
 app.post("/api/products", async (req, res) => {
   // Creiamo una nuova istanza del modello con i dati che arrivano dal frontend (req.body)
   const newProduct = new Product({
@@ -100,7 +100,23 @@ app.get("/api/orders", async (req, res) => {
   }
 });
 
-// 4. UPDATE (Modifica un prodotto esistente)
+// Rotta per aggiornare lo stato dell'ordine
+app.patch("/api/orders/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    // Cerchiamo l'ordine e cambiamo lo stato in 'Shipped'
+    const updatedOrder = await Order.findByIdAndUpdate(
+      id,
+      { status: "Shipped" },
+      { new: true }, // Restituisce l'oggetto aggiornato
+    );
+    res.json(updatedOrder);
+  } catch (err) {
+    res.status(500).json({ message: "Errore durante l'aggiornamento" });
+  }
+});
+
+// UPDATE (Modifica un prodotto esistente)
 app.put("/api/products/:id", async (req, res) => {
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
@@ -116,7 +132,7 @@ app.put("/api/products/:id", async (req, res) => {
   }
 });
 
-// 5. DELETE (Elimina un prodotto)
+// DELETE (Elimina un prodotto)
 app.delete("/api/products/:id", async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id);
