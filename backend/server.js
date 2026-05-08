@@ -116,6 +116,19 @@ app.patch("/api/orders/:id", async (req, res) => {
   }
 });
 
+// Rotta per eliminare un ordine tramite ID
+app.delete("/api/orders/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Order.findByIdAndDelete(id);
+    res.json({ message: "Ordine eliminato con successo" });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Errore durante l'eliminazione", error: err });
+  }
+});
+
 // UPDATE (Modifica un prodotto esistente)
 app.put("/api/products/:id", async (req, res) => {
   try {

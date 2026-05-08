@@ -33,6 +33,20 @@ function AdminOrders() {
       .catch((err) => console.error("Errore aggiornamento:", err));
   };
 
+  const deleteOrder = (id) => {
+    if (window.confirm("Sei sicuro di voler eliminare questo ordine?")) {
+      fetch(`http://localhost:5000/api/orders/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => {
+          if (res.ok) {
+            fetchOrders(); // Ricarichiamo la lista dopo l'eliminazione
+          }
+        })
+        .catch((err) => console.error("Errore eliminazione:", err));
+    }
+  };
+
   return (
     <div className="admin-container container">
       <h2>📦 Pannello Gestione Ordini</h2>
@@ -100,6 +114,12 @@ function AdminOrders() {
                       Segna come Spedito
                     </button>
                   )}
+                  <button
+                    className="btn-delete"
+                    onClick={() => deleteOrder(order._id)}
+                  >
+                    Elimina
+                  </button>
                 </td>
               </tr>
             ))}

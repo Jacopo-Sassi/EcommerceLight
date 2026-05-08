@@ -393,6 +393,23 @@ button:disabled {
   vertical-align: middle;
 }
 
+.btn-delete {
+  background-color: transparent;
+  color: #ef4444;
+  border: 1px solid #ef4444;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-left: 8px;
+  transition: all 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: #ef4444;
+  color: white;
+}
+
 /* Responsive: se lo schermo è piccolo, il carrello va sotto */
 @media (max-width: 768px) {
   .main-layout {
