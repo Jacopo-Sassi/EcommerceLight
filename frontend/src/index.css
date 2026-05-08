@@ -295,6 +295,58 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.nav-menu {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.nav-menu button {
+  background: #e5e7eb;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nav-menu button.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  color: black;
+}
+
+.orders-table th {
+  background: #f8fafc;
+}
+
+.order-item-detail {
+  font-size: 0.85rem;
+}
+
+.order-total-cell {
+  font-weight: bold;
+  color: var(--price-color);
+}
+
 /* Responsive: se lo schermo è piccolo, il carrello va sotto */
 @media (max-width: 768px) {
   .main-layout {

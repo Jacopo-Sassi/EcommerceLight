@@ -82,12 +82,21 @@ app.post("/api/orders", async (req, res) => {
     const savedOrder = await newOrder.save();
     res.status(201).json(savedOrder);
   } catch (err) {
-    res
-      .status(400)
-      .json({
-        message: "Errore durante il salvataggio dell'ordine",
-        error: err,
-      });
+    res.status(400).json({
+      message: "Errore durante il salvataggio dell'ordine",
+      error: err,
+    });
+  }
+});
+
+// Recupera tutti gli ordini salvati
+app.get("/api/orders", async (req, res) => {
+  try {
+    // .populate('items.productId') serve a trasformare l'ID del prodotto nei dati reali (nome, prezzo, ecc.)
+    const orders = await Order.find().populate("items.productId");
+    res.json(orders);
+  } catch (err) {
+    res.status(500).json({ message: "Errore nel recupero ordini", error: err });
   }
 });
 

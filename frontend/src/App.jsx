@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./index.css";
 import ProductCard from "./components/ProductCard";
 import Cart from "./components/Cart";
+import AdminOrders from "./components/AdminOrders";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -9,6 +10,7 @@ function App() {
   const [customerName, setCustomerName] = useState("");
   const [notification, setNotification] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [view, setView] = useState("admin");
 
   const showNotification = (msg) => {
     setNotification(msg);
@@ -67,24 +69,44 @@ function App() {
   return (
     <div>
       {notification && <div className="notification-toast">{notification}</div>}
+
       <header>
         <h1>E-commerce Light 🥉</h1>
+        <nav className="nav-menu">
+          <button
+            onClick={() => setView("shop")}
+            className={view === "shop" ? "active" : ""}
+          >
+            Negozio
+          </button>
+          <button
+            onClick={() => setView("admin")}
+            className={view === "admin" ? "active" : ""}
+          >
+            Ordini (Admin)
+          </button>
+        </nav>
       </header>
 
-      <main className="container main-layout">
-        <div className="products-grid">
-          {products.map((p) => (
-            <ProductCard key={p._id} product={p} onAddToCart={addToCart} />
-          ))}
-        </div>
-
-        <Cart
-          cart={cart}
-          customerName={customerName}
-          setCustomerName={setCustomerName}
-          onCheckout={handleCheckout}
-          isSubmitting={isSubmitting}
-        />
+      <main className="container">
+        {view === "shop" ? (
+          <div className="main-layout">
+            <div className="products-grid">
+              {products.map((p) => (
+                <ProductCard key={p._id} product={p} onAddToCart={addToCart} />
+              ))}
+            </div>
+            <Cart
+              cart={cart}
+              customerName={customerName}
+              setCustomerName={setCustomerName}
+              onCheckout={handleCheckout}
+              isSubmitting={isSubmitting}
+            />
+          </div>
+        ) : (
+          <AdminOrders />
+        )}
       </main>
     </div>
   );
